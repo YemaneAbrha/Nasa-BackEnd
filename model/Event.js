@@ -24,11 +24,11 @@ const EventSchema = mongoose.Schema({
 
 class EventClass {
     static async getEvent() {
-        const Event = await this.find({})
+        const event = await this.find({})
             .sort({ createdAt: -1 })
             .skip(0)
             .limit(10);
-        return Event;
+        return event;
     }
     static async setEvent({ title, body, image }) {
         return this.create({
