@@ -48,5 +48,5 @@ class EventClass {
 EventSchema.loadClass(EventClass)
 const Event = mongoose.model("Event", EventSchema);
 module.exports = {
-    Event,
+    Event
 };
