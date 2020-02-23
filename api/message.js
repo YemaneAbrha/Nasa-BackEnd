@@ -7,20 +7,31 @@ router.get('/', async (req, res) => {
     try {
         const message = Message.getMessage()
         res.json(message);
-    } catch (error) {
+    } catch (err) {
         res.json({
             error: error.message || error.toString()
         });
 
     }
 });
-//add message to the list
-router.post('/add', async (req, res) => {
 
+router.post('/add', async (req, res) => {
+    try {
+        const message = await Message.setMessage(req.body);
+        res.json(message);
+    } catch (err) {
+        res.json({ err: err.message || err.toString })
+    }
 });
 
-// edit message from the list
+
 
 router.post('/edit', async (res, res) => {
-
+    try {
+        const message = await Message.editMessage(req.body);
+        res.json(message);
+    }
+    catch (err) {
+        res.json({ err: err.message || err.toString })
+    }
 });
