@@ -5,7 +5,7 @@ const Event = require('../model/Event');
 
 router.get('/', async (req, res) => {
     try {
-        const events = await Event.getEvent()
+        const events = await Event.getEvent();
         res.json(events);
     }
     catch (err) {
@@ -26,10 +26,11 @@ router.post('/add', async (req, res) => {
 router.post('/edit', async (req, res) => {
     try {
         const event = await Event.editEvent(req.body);
+
         res.json(event);
     }
     catch (err) {
-        res.json({ error: err.message || err.toString })
+        res.json({ err: err.message || err.toString })
     }
 });
 module.exports = router;

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const EventSchema = mongoose.Schema({
+const EventSchema = new Schema({
     title: {
         type: String,
         require: true,
@@ -22,31 +23,27 @@ const EventSchema = mongoose.Schema({
 
 class EventClass {
     static async getEvent() {
-        const event = await this.find({})
+        const events = await this.find({})
             .sort({ createdAt: -1 })
             .skip(0)
             .limit(10);
-        return event;
+        return { events };
     }
+
     static async setEvent({ title, body, image }) {
         return this.create({
             title,
             body,
             image,
-        })
+        });
     }
     static async editEvent({ id, title, body, image }) {
-        const filter = { _id: id };
-        const update = { title: title, body: body, image: image };
-        const editedEvent = this.findOneAndUpdate(filter, update, {
-            new: true
-        });
+        const editedEvent = this.findOneAndUpdate(id, { title: title, body: body, image: image }, { new: true });
+        console.log("I am There Fuck Ya");
         return editedEvent;
 
     }
 }
 EventSchema.loadClass(EventClass)
 const Event = mongoose.model("Event", EventSchema);
-module.exports = {
-    Event
-};
+module.exports = Event;
