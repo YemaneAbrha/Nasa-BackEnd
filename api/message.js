@@ -26,7 +26,7 @@ router.post('/add', async (req, res) => {
 
 
 
-router.post('/edit', async (res, res) => {
+router.post('/edit', async (req, res) => {
     try {
         const message = await Message.editMessage(req.body);
         res.json(message);

@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
     });
 })
 app.use('/events', require('./api/event'))
-app.use('/')
+app.use('/messages', require('./api/message'))
 const port = process.env.PORT
 const env = process.env.NODE_ENV
 
