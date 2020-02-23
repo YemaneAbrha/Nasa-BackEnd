@@ -1,11 +1,11 @@
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
+// const router = express.Router();
 
 const Event = require('../model/Event');
 
-router.get('/events', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
-        const events = await Event.event
+        const events = await Event.getEvent()
         res.json(events);
     }
     catch (err) {
@@ -13,7 +13,7 @@ router.get('/events', async (req, res) => {
     }
 });
 
-router.post('/events/add', async (req, res) => {
+router.post('/add', async (req, res) => {
     try {
         const event = await Event.setEvent(req.body);
         res.json(event);
@@ -23,7 +23,7 @@ router.post('/events/add', async (req, res) => {
     }
 });
 
-router.post('/events/edit', async (req, res) => {
+router.post('/edit', async (req, res) => {
     try {
         const event = await Event.editEvent(req.body);
         res.json(event);
@@ -32,3 +32,4 @@ router.post('/events/edit', async (req, res) => {
         res.json({ error: err.message || err.toString })
     }
 });
+module.exports = router;

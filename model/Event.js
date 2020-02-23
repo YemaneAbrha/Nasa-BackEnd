@@ -18,8 +18,6 @@ const EventSchema = mongoose.Schema({
         default: Date.now
 
     }
-
-
 });
 
 class EventClass {
@@ -49,7 +47,6 @@ class EventClass {
 }
 EventSchema.loadClass(EventClass)
 const Event = mongoose.model("Event", EventSchema);
-model.exports = {
+module.exports = {
     Event,
-
 };
