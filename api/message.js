@@ -35,3 +35,4 @@ router.post('/edit', async (res, res) => {
         res.json({ err: err.message || err.toString })
     }
 });
+module.exports = router;
