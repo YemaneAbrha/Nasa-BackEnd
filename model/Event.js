@@ -39,7 +39,6 @@ class EventClass {
     }
     static async editEvent({ id, title, body, image }) {
         const editedEvent = this.findOneAndUpdate(id, { title: title, body: body, image: image }, { new: true });
-        console.log("I am There Fuck Ya");
         return editedEvent;
 
     }
