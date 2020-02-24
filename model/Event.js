@@ -27,7 +27,7 @@ class EventClass {
             .sort({ createdAt: -1 })
             .skip(0)
             .limit(10);
-        return { events };
+        return events;
     }
 
     static async setEvent({ title, body, image }) {
