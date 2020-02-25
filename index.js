@@ -8,6 +8,7 @@ const app = express()
 
 app.use(bodyparser.urlencoded({ extended: false }))
 app.use(bodyparser.json())
+app.use('/uploads', express.static('uploads'));
 const DB_URI = process.env.DB_URI
 //Database
 

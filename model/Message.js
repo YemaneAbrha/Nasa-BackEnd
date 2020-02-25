@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
-const MessageSchema = mongoose.Schema({
+const MessageSchema = new Schema({
     body: {
         type: String,
         require: true,
@@ -38,6 +39,4 @@ class MessageClass {
 }
 MessageSchema.loadClass(MessageClass)
 const Message = mongoose.model("Message", MessageSchema);
-module.exports = {
-    Message
-}
+module.exports = Message;

@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const multer = require('multer');
+
 const { Schema } = mongoose;
 
 const EventSchema = new Schema({
@@ -22,6 +24,7 @@ const EventSchema = new Schema({
 });
 
 class EventClass {
+
     static async getEvent() {
         const events = await this.find({})
             .sort({ createdAt: -1 })
@@ -30,11 +33,12 @@ class EventClass {
         return events;
     }
 
-    static async setEvent({ title, body, image }) {
+    static async setEvent(title, body, image) {
         return this.create({
-            title,
-            body,
-            image,
+            title: title,
+            body: body,
+            image: image,
+
         });
     }
     static async editEvent({ id, title, body, image }) {
